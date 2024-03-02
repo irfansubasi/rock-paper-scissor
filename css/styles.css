@@ -1,0 +1,332 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", system-ui!important;
+  font-weight: 400!important;
+  font-style: normal!important;
+  font-size: 1vw!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#logo{
+  animation: fadeinout 10s linear forwards;
+}
+
+#after-logo{
+  animation: flash linear 1s infinite;
+}
+
+.background {
+  background-image: url("../images/bg.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden
+}
+
+.outlined-text {
+  text-shadow:  -1px -1px 0 #000,  
+                1px -1px 0 #000,
+                -1px  1px 0 #000,
+                1px  1px 0 #000;
+}
+
+.tv-container{
+  display: grid;
+
+  grid-template-rows: 17% 64% 17%;
+  grid-template-columns: 20% 6.7% 36% 17.75% 20%;
+  /* grid-template-rows: 0.9fr 3.5fr 0.9fr;
+  grid-template-columns: 2fr 0.546fr 2.91fr 1.44fr 1.8fr; */
+  grid-template-areas:
+        "button-area tvtop tvtop tvtop howto"
+        "button-area tvleft screen tvright howto"
+        "button-area tvbottom tvbottom tvbottom howto";
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+#tv-screen{
+  overflow: hidden;
+}
+
+
+.tv-content{
+  position: absolute;
+  top: 0;
+  left: 0%;
+  height: 100%;
+  transition: left 5s;
+}
+
+
+@keyframes slide{
+  from {
+    left: 0;
+  }
+  to {
+    left: -307%;
+  }
+}
+
+.char-content{
+  background-color: #000;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 0.5fr);
+  grid-template-rows: 0.5fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+
+.start-screen{
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#arrow-buttons{
+  display: flex;
+}
+
+.char-avatar{
+  width: 100%;
+  height: auto;
+}
+
+.character{
+  width: 80%;
+  height: auto;
+  border: 0.5vw solid transparent;
+}
+
+.selected {
+  border-color: red;
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 5%;
+}
+
+
+.controller{
+  max-width: 65%;
+}
+
+.bar1{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 35%;
+}
+
+.bar2{
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 35%;
+  transform: scaleX(-1);
+}
+
+.player-health-bar{
+  position: absolute;
+  top: 10.8%;
+  left: 13.5%;
+  width: 30%;
+  height: 4%;
+  background-color: #000;
+}
+
+#player-name{
+  position: absolute;
+  color: #fff;
+  left: 14%;
+  top: 6%;
+  font-size: 0.8vw;
+}
+
+#cpu-name{
+  position: absolute;
+  color: #fff;
+  right: 14%;
+  top: 6%;
+  font-size: 0.8vw;
+}
+
+.health{
+  background-color: green;
+  height: 100%;
+  width: 100%;
+  transition: 1s;
+}
+
+.cpu-health-bar{
+  position: absolute;
+  top: 10.8%;
+  right: 13.5%;
+  width: 30%;
+  height: 4%;
+  background-color: #000;
+  transform: scaleX(-1);
+}
+
+.char1{
+  position: absolute;
+  top: 42%;
+  left: -30%;
+  width: 30%;
+  animation: runplayer 4s forwards;
+}
+
+@keyframes runplayer{
+  from {left: -30%;}
+  to {left: 25%;}
+}
+
+.char2{
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  width: 30%;
+}
+
+.char2-animation{
+  animation: runcpu 4s forwards;
+}
+
+@keyframes runcpu{
+  from {left: 100%;}
+  to {left: 45%;}
+}
+
+#announce{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+#winner{
+  position: relative;
+  background-image: url("../images/ending.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+}
+
+.game-over-animated{
+  animation-name: gameover;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+.howto{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+  text-align: center;
+  padding: 5%;
+}
+
+.for-mobile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.7rem;
+}
+
+.phone {
+  height: 50px;
+  width: 100px;
+  border: 3px solid white;
+  border-radius: 10px;
+  animation: rotate 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes rotate {
+  0% {
+		transform: rotate(0deg)
+	}
+	50% {
+		transform: rotate(-90deg)
+	}
+	100% {
+		transform: rotate(-90deg)
+	}
+}
+
+.message {
+  color: #fff;
+  margin-top: 10%;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+
+
+@keyframes gameover {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeinout {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@keyframes flash {
+	0% { opacity: 1; } 
+	50% { opacity: .1; } 
+	100% { opacity: 1; }
+}
+
+@media only screen and (max-device-width: 812px){
+  .rotate-message {
+    display: block;
+  }
+}
+
+/* @media screen and (max-width: 2000px) {
+  body {
+    transform: rotate(90deg);
+    transform-origin: bottom left;
+    top: -100vw;
+    left: 0;
+    height: 100vw!important;
+    width: 100vh!important;
+    background-image: url("../images/bgrotated.gif")!important;
+    background-size: auto!important;
+  }
+} */
